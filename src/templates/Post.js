@@ -7,7 +7,7 @@ const Post = ({ pageContext }) => {
 
 	return (
 		<Layout>
-			<h1>{ title }</h1>
+			<h1>{title}</h1>
 			<p>Post content</p>
 		</Layout>
 	);
