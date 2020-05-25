@@ -1,12 +1,15 @@
 import React from 'react';
 
+import Layout from '../Layout'
+
 const Page = ({ pageContext }) => {
 	const { title } = pageContext
 
 	return (
-		<div>
+		<Layout>
 			<h1>{ title }</h1>
-		</div>
+			<p>Page content</p>
+		</Layout>
 	);
 };
 
