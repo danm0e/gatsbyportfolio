@@ -1,8 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
-import GlobalStyles, { Container } from "../assets/styles"
-import MainMenu from "../components/MainMenu/MainMenu"
+import GlobalStyles, { Container } from "@assets/styles"
+import MainMenu from "@components/MainMenu/MainMenu"
 
 const Layout = ({ children }) => (
 	<>

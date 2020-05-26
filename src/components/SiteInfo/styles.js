@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { palette } from '../../assets/styles/Colors'
+import { palette } from '@assets/styles/Colors'
 
 export const Wrapper = styled.div`
 	flex-grow: 1;
@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 export const Title = styled.div`
 	color: ${palette.white};
 	font-size: 1.5rem;
-	font-weight: 700;
+	font-weight: 800;
 	margin-bottom: 0.5rem;
 `
 

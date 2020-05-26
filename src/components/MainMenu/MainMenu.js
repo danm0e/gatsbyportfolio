@@ -1,6 +1,6 @@
 import React from 'react';
 import { useStaticQuery, graphql } from "gatsby"
-import SiteInfo from '../SiteInfo'
+import SiteInfo from '@components/SiteInfo'
 
 import { Wrapper, MenuItem } from "./styles"
 
@@ -29,6 +29,7 @@ const MainMenu = () => {
 	return (
 		<Wrapper>
 			<SiteInfo />
+
 			{items.map(item => {
 				const { title, object_slug } = item
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Layout from '../Layout'
+import Layout from "@layout"
 
 const Post = ({ pageContext }) => {
 	const { title, content } = pageContext

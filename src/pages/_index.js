@@ -1,8 +1,8 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Layout from "../Layout"
-import PageContent from "../components/PageContent"
+import Layout from "@layout"
+import PageContent from "@components/PageContent"
 
 const HomePage = () => {
 	const { allWordpressPage: { edges: PAGE_DATA } } = useStaticQuery(
@@ -21,9 +21,9 @@ const HomePage = () => {
 		`
 	)
 
-	return(
+	return (
 		<Layout>
-			<PageContent data={ PAGE_DATA } />
+			<PageContent data={PAGE_DATA} />
 		</Layout>
 	)
 }
