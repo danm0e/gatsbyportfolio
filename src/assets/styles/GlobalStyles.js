@@ -10,8 +10,8 @@ const GlobalStyles = createGlobalStyle`
 `
 
 const Container = styled.div`
-	max-width: 960px;
 	margin: 0 auto;
+	max-width: 960px;
 `
 
 export default GlobalStyles
