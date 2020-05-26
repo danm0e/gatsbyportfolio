@@ -6,7 +6,7 @@ const MainMenu = () => {
 		query {
 			allWordpressWpApiMenusMenusItems(filter: {
 				name: {
-					eq: "Main Menu" # limits the results to a specific menu name
+					eq: "Main Menu" # return only this menu
 				}
 			}) {
 			edges {

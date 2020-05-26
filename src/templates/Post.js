@@ -2,8 +2,8 @@ import React from 'react';
 
 import Layout from '../Layout'
 
-const Post = ({ postContext }) => {
-	const { title, content } = postContext
+const Post = ({ pageContext }) => {
+	const { title, content } = pageContext
 
 	return (
 		<Layout>
