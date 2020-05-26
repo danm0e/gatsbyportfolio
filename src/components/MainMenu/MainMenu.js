@@ -1,6 +1,8 @@
 import React from 'react';
 import { useStaticQuery, graphql, Link } from "gatsby"
 
+import { Wrapper, MenuItem } from "./styles"
+
 const MainMenu = () => {
 	const { allWordpressWpApiMenusMenusItems } = useStaticQuery(graphql`
 		query {
@@ -24,16 +26,17 @@ const MainMenu = () => {
 	const { items } = allWordpressWpApiMenusMenusItems.edges[0].node
 
 	return (
-		<div>
+		<Wrapper>
 			{items.map(item => {
 				const { title, object_slug } = item
+
 				return (
-					<Link to={object_slug} key={title}>
+					<MenuItem to={object_slug} key={title}>
 						{title}
-					</Link>
+					</MenuItem>
 				)
 			})}
-		</div>
+		</Wrapper>
 	)
 };
 

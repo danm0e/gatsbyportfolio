@@ -1,7 +1,10 @@
 import styled, { createGlobalStyle } from 'styled-components'
+import { ResetCSS } from './ResetCSS'
 
 const GlobalStyles = createGlobalStyle`
-	body {
+	${ResetCSS}
+
+	html, body {
 		font-family: 'Open Sans', sans-serif;
 	}
 `
