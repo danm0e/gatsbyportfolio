@@ -21,7 +21,7 @@ const SiteInfo = () => {
 
 	return (
 		<Wrapper>
-			<Title>{name}</Title>
+			<Title to="/">{name}</Title>
 			<Tagline>{description}</Tagline>
 		</Wrapper>
 	);

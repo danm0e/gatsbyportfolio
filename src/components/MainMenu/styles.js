@@ -3,7 +3,6 @@ import { Link } from "gatsby"
 import { palette } from '@assets/styles/Colors'
 
 export const Wrapper = styled.div`
-	background-color: ${palette.secondary};
 	display: flex;
 	padding: 1rem 1.5rem;
 `
