@@ -2,7 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql } from "gatsby"
 import PortfolioItem from './PortfolioItem';
 
-const Portfolio = () => {
+const PortfolioGrid = () => {
 	const { allWordpressWpProjects } = useStaticQuery(graphql`
 		query {
 			allWordpressWpProjects {
@@ -25,4 +25,4 @@ const Portfolio = () => {
 	return allWordpressWpProjects.edges.map(project => <PortfolioItem item={project.node} key={project.node.id} />)
 };
 
-export default Portfolio;
+export default PortfolioGrid;

@@ -36,12 +36,13 @@ exports.createPages = async ({ graphql, actions }) => {
             id
             path
             status
-			template
-			title
-			content
+						template
+						title
+						content
           }
         }
-      }
+			}
+			
       allWordpressPost {
         edges {
           node {
@@ -49,13 +50,29 @@ exports.createPages = async ({ graphql, actions }) => {
             path
             status
             template
-			format
-			title
-			content
+						format
+						title
+						content
           }
         }
-      }
-    }
+			}
+
+			allWordpressWpProjects {
+				edges {
+					node {
+						id
+						title
+						slug
+						excerpt
+						content
+						featured_media {
+							source_url
+						}
+					}
+				}
+			}
+
+		}
   `)
 
 	// Check for any errors
@@ -64,7 +81,7 @@ exports.createPages = async ({ graphql, actions }) => {
 	}
 
 	// Access query results via object destructuring
-	const { allWordpressPage, allWordpressPost } = result.data
+	const { allWordpressPage, allWordpressPost, allWordpressWpProjects } = result.data
 
 	// Create Page pages.
 	const pageTemplate = path.resolve(`./src/templates/Page.js`)
@@ -99,4 +116,15 @@ exports.createPages = async ({ graphql, actions }) => {
 			context: edge.node,
 		})
 	})
+
+	const portfolioTemplate = path.resolve(`./src/templates/Portfolio.js`)
+	// configure automaticaly generated portfolio pages
+	allWordpressWpProjects.edges.forEach(edge => {
+		createPage({
+			path: `/projects/${edge.node.slug}`,
+			component: slash(portfolioTemplate),
+			context: edge.node,
+		})
+	})
+
 }
