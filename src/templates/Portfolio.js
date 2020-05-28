@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Layout from "@layout"
 import FeaturedImage from "@components/FeaturedImage"
 
@@ -10,7 +9,6 @@ const Portfolio = ({ pageContext }) => {
 		<Layout>
 			<h1>{title}</h1>
 			<FeaturedImage src={thumbnail} alt='Thumbnail' />
-			{/* <img src={thumbnail} alt='Thumbnail' /> */}
 			<div dangerouslySetInnerHTML={{ __html: content }} />
 		</Layout>
 	);
