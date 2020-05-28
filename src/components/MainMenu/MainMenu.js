@@ -31,10 +31,10 @@ const MainMenu = () => {
 			<SiteInfo />
 
 			{items.map(item => {
-				const { title, object_slug } = item
+				const { title, object_slug: url } = item
 
 				return (
-					<MenuItem to={object_slug} key={title}>
+					<MenuItem to={url} key={title}>
 						{title}
 					</MenuItem>
 				)
