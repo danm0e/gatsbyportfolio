@@ -13,7 +13,7 @@ export const Item = styled(Link)`
 	flex-wrap: wrap;
 	margin-bottom: 1rem;
 	overflow: hidden;
-	padding: 1rem;
+	padding: 1rem 1.5rem;
 	position: relative;
 	transition: background 0.3s ease-in-out;
 

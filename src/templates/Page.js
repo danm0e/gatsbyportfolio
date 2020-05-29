@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from "@layout"
+import PageContent from '@components/PageContent'
 
 const Page = ({ pageContext }) => {
 	const { title, content } = pageContext
@@ -7,7 +8,7 @@ const Page = ({ pageContext }) => {
 	return (
 		<Layout>
 			<h1>{title}</h1>
-			<div dangerouslySetInnerHTML={{ __html: content }} />
+			<PageContent content={content} />
 		</Layout>
 	);
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from "@layout"
 import FeaturedImage from "@components/FeaturedImage"
+import PageContent from '@components/PageContent'
 
 const SinglePortfolio = ({ pageContext }) => {
 	const { title, content, featured_media: { source_url: thumbnail } } = pageContext
@@ -9,7 +10,7 @@ const SinglePortfolio = ({ pageContext }) => {
 		<Layout>
 			<h1>{title}</h1>
 			<FeaturedImage src={thumbnail} alt='Thumbnail' />
-			<div dangerouslySetInnerHTML={{ __html: content }} />
+			<PageContent content={content} />
 		</Layout>
 	);
 };
