@@ -67,10 +67,10 @@ export const Typography = css`
 	}
 
 	blockquote {
-		border-left: 1px solid ${palette.primary};
+		border-left: 3px solid ${palette.tertiary};
 		margin: 2rem 0;
 		max-width: 70%;
-		padding-left: 1rem;
+		padding-left: 1.5rem;
 
 		p {
 			font-size: 1.1rem;
