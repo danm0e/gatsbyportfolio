@@ -1,8 +1,9 @@
 import React from 'react';
 import Layout from "@layout"
 
-const Post = ({ pageContext }) => {
+const SingleBlog = ({ pageContext }) => {
 	const { title, content } = pageContext
+	console.log('SINGLE BLOG', pageContext)
 
 	return (
 		<Layout>
@@ -12,4 +13,4 @@ const Post = ({ pageContext }) => {
 	);
 };
 
-export default Post;
+export default SingleBlog;

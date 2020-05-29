@@ -83,9 +83,35 @@ exports.createPages = async ({ graphql, actions }) => {
 	// Access query results via object destructuring
 	const { allWordpressPage, allWordpressPost, allWordpressWpProjects } = result.data
 
-	// Create Page pages.
+	// Assign Page Templates
 	const pageTemplate = path.resolve(`./src/templates/Page.js`)
-	const portfolioContentTemplate = path.resolve(`./src/templates/PortfolioContent.js`)
+	const portfolioPageTemplate = path.resolve(`./src/templates/PortfolioPage.js`)
+	const blogPageTemplate = path.resolve(`./src/templates/BlogPage.js`)
+
+	const getPageTemplate = (type, path) => {
+		console.log('----------------')
+		console.log(path)
+		console.log('----------------')
+
+		if (type === 'projects.php') {
+			console.log('----------------')
+			console.log('GETTING PROJECTS')
+			console.log('----------------')
+			return slash(portfolioPageTemplate)
+		}
+
+		if (type === 'blog.php') {
+			console.log('----------------')
+			console.log('GETTING BLOG')
+			console.log('----------------')
+			return slash(blogPageTemplate)
+		}
+
+		return slash(pageTemplate)
+	}
+
+	// Create Page pages.
+
 	// We want to create a detailed page for each page node.
 	// The path field contains the relative original WordPress link
 	// and we use it for the slug to preserve url structure.
@@ -100,16 +126,12 @@ exports.createPages = async ({ graphql, actions }) => {
 			// optional but is often necessary so the template
 			// can query data specific to each page.
 			path: edge.node.path,
-			component: slash(
-				edge.node.template === 'projects.php'
-					? portfolioContentTemplate
-					: pageTemplate
-			),
+			component: getPageTemplate(edge.node.template, edge.node.path),
 			context: edge.node,
 		})
 	})
 
-	const postTemplate = path.resolve(`./src/templates/Post.js`)
+	const singleBlog = path.resolve(`./src/templates/SingleBlog.js`)
 	// We want to create a detailed page for each post node.
 	// The path field stems from the original WordPress link
 	// and we use it for the slug to preserve url structure.
@@ -117,17 +139,17 @@ exports.createPages = async ({ graphql, actions }) => {
 	allWordpressPost.edges.forEach(edge => {
 		createPage({
 			path: edge.node.path,
-			component: slash(postTemplate),
+			component: slash(singleBlog),
 			context: edge.node,
 		})
 	})
 
-	const portfolioTemplate = path.resolve(`./src/templates/Portfolio.js`)
+	const singlePortfolio = path.resolve(`./src/templates/SinglePortfolio.js`)
 	// configure automaticaly generated portfolio pages
 	allWordpressWpProjects.edges.forEach(edge => {
 		createPage({
 			path: `/projects/${edge.node.slug}`,
-			component: slash(portfolioTemplate),
+			component: slash(singlePortfolio),
 			context: edge.node,
 		})
 	})

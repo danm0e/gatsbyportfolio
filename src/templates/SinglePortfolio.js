@@ -2,8 +2,9 @@ import React from 'react';
 import Layout from "@layout"
 import FeaturedImage from "@components/FeaturedImage"
 
-const Portfolio = ({ pageContext }) => {
+const SinglePortfolio = ({ pageContext }) => {
 	const { title, content, featured_media: { source_url: thumbnail } } = pageContext
+	console.log('SINGLE FOLIO', pageContext)
 
 	return (
 		<Layout>
@@ -14,4 +15,4 @@ const Portfolio = ({ pageContext }) => {
 	);
 };
 
-export default Portfolio;
+export default SinglePortfolio;
