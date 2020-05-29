@@ -1,14 +1,15 @@
 import React from 'react';
 import Layout from "@layout"
+import BlogList from "@components/BlogList"
 
 const BlogPage = ({ pageContext }) => {
 	const { title, content } = pageContext
-	console.log('BLOG', pageContext)
 
 	return (
 		<Layout>
-			<h1>BLOG: {title}</h1>
+			<h1>{title}</h1>
 			<div dangerouslySetInnerHTML={{ __html: content }} />
+			<BlogList />
 		</Layout>
 	);
 };

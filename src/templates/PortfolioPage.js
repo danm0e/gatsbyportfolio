@@ -4,7 +4,6 @@ import PortfolioGrid from "@components/PortfolioGrid"
 
 const PortfolioPage = ({ pageContext }) => {
 	const { title, content } = pageContext
-	console.log('FOLIO', pageContext)
 
 	return (
 		<Layout>

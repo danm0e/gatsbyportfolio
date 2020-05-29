@@ -3,7 +3,6 @@ import Layout from "@layout"
 
 const SingleBlog = ({ pageContext }) => {
 	const { title, content } = pageContext
-	console.log('SINGLE BLOG', pageContext)
 
 	return (
 		<Layout>

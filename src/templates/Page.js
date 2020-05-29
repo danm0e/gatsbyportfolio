@@ -3,7 +3,6 @@ import Layout from "@layout"
 
 const Page = ({ pageContext }) => {
 	const { title, content } = pageContext
-	console.log('PAGE', pageContext)
 
 	return (
 		<Layout>

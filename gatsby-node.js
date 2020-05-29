@@ -88,22 +88,14 @@ exports.createPages = async ({ graphql, actions }) => {
 	const portfolioPageTemplate = path.resolve(`./src/templates/PortfolioPage.js`)
 	const blogPageTemplate = path.resolve(`./src/templates/BlogPage.js`)
 
-	const getPageTemplate = (type, path) => {
-		console.log('----------------')
-		console.log(path)
-		console.log('----------------')
-
-		if (type === 'projects.php') {
-			console.log('----------------')
-			console.log('GETTING PROJECTS')
-			console.log('----------------')
+	const getPageTemplate = path => {
+		// if (type === 'projects.php') {
+		if (path === '/projects/') {
 			return slash(portfolioPageTemplate)
 		}
 
-		if (type === 'blog.php') {
-			console.log('----------------')
-			console.log('GETTING BLOG')
-			console.log('----------------')
+		// if (type === 'blog.php') {
+		if (path === '/blog/') {
 			return slash(blogPageTemplate)
 		}
 
@@ -126,7 +118,7 @@ exports.createPages = async ({ graphql, actions }) => {
 			// optional but is often necessary so the template
 			// can query data specific to each page.
 			path: edge.node.path,
-			component: getPageTemplate(edge.node.template, edge.node.path),
+			component: getPageTemplate(edge.node.path), // "edge.node.template" for use with WP templates
 			context: edge.node,
 		})
 	})

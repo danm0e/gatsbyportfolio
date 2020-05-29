@@ -4,7 +4,6 @@ import FeaturedImage from "@components/FeaturedImage"
 
 const SinglePortfolio = ({ pageContext }) => {
 	const { title, content, featured_media: { source_url: thumbnail } } = pageContext
-	console.log('SINGLE FOLIO', pageContext)
 
 	return (
 		<Layout>
