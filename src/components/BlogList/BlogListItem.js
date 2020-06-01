@@ -6,7 +6,7 @@ const BlogListItem = ({ item }) => {
 	const { title, excerpt, slug, date } = item
 
 	return (
-		<Item to={slug}>
+		<Item to={`/blog/${slug}`}>
 			<h3>{title}</h3>
 			<h6>{date}</h6>
 			<div dangerouslySetInnerHTML={{ __html: excerpt }} />

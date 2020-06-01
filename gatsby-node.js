@@ -34,7 +34,7 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             id
-            path
+            slug
             status
 						template
 						title
@@ -47,7 +47,7 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             id
-            path
+            slug
             status
             template
 						format
@@ -88,14 +88,12 @@ exports.createPages = async ({ graphql, actions }) => {
 	const portfolioPageTemplate = path.resolve(`./src/templates/PortfolioPage.js`)
 	const blogPageTemplate = path.resolve(`./src/templates/BlogPage.js`)
 
-	const getPageTemplate = path => {
-		// if (type === 'projects.php') {
-		if (path === '/projects/') {
+	const getPageTemplate = slug => {
+		if (slug === 'projects') {
 			return slash(portfolioPageTemplate)
 		}
 
-		// if (type === 'blog.php') {
-		if (path === '/blog/') {
+		if (slug === 'blog') {
 			return slash(blogPageTemplate)
 		}
 
@@ -117,8 +115,8 @@ exports.createPages = async ({ graphql, actions }) => {
 			// as a template component. The `context` is
 			// optional but is often necessary so the template
 			// can query data specific to each page.
-			path: edge.node.path,
-			component: getPageTemplate(edge.node.path), // "edge.node.template" for use with WP templates
+			path: edge.node.slug,
+			component: getPageTemplate(edge.node.slug), // "edge.node.template" for use with WP templates
 			context: edge.node,
 		})
 	})
@@ -130,7 +128,7 @@ exports.createPages = async ({ graphql, actions }) => {
 	// The Post ID is prefixed with 'POST_'
 	allWordpressPost.edges.forEach(edge => {
 		createPage({
-			path: edge.node.path,
+			path: `/blog/${edge.node.slug}`,
 			component: slash(singleBlog),
 			context: edge.node,
 		})
