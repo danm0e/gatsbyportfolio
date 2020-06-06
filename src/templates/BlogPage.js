@@ -1,16 +1,17 @@
 import React from 'react';
 import Layout from "@layout"
-import PageContent from '@components/PageContent'
 import BlogList from "@components/BlogList"
+import Pagination from "@components/Pagination"
 
 const BlogPage = ({ pageContext }) => {
-	const { title, content } = pageContext
+	console.log(pageContext)
+	const { currentPage, numPages, posts } = pageContext
 
 	return (
 		<Layout>
-			<h1>{title}</h1>
-			<PageContent content={content} />
-			<BlogList />
+			<h1>Blog</h1>
+			<BlogList data={posts} />
+			<Pagination numPages={numPages} currentPage={currentPage} slug="/blog" />
 		</Layout>
 	);
 };

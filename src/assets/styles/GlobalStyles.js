@@ -26,8 +26,11 @@ const GlobalStyles = createGlobalStyle`
 `
 
 const Container = styled.div`
+	display: flex;
+	flex-direction: column;
 	margin: 0 auto;
 	max-width: 960px;
+	min-height: 600px;
 	padding: 1rem 1.5rem;
 `
 

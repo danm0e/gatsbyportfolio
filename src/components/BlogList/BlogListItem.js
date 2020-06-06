@@ -1,4 +1,5 @@
 import React from 'react';
+import PageContent from '@components/PageContent'
 
 import { Item } from './styles'
 
@@ -9,7 +10,7 @@ const BlogListItem = ({ item }) => {
 		<Item to={`/blog/${slug}`}>
 			<h3>{title}</h3>
 			<h6>{date}</h6>
-			<div dangerouslySetInnerHTML={{ __html: excerpt }} />
+			<PageContent content={excerpt} />
 		</Item>
 	);
 };
