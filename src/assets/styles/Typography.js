@@ -29,7 +29,7 @@ export const Typography = css`
 	h1 {
 		font-size: 48px;
 		font-weight: 700;
-		margin-bottom: 4rem;
+		margin-bottom: 2rem;
 	}
 
 	h2 {
@@ -75,5 +75,10 @@ export const Typography = css`
 		p {
 			font-size: 1.1rem;
 		}
+	}
+
+	small {
+		font-size: 0.8rem;
+		color: ${palette.grey[300]};
 	}
 `

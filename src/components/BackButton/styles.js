@@ -3,9 +3,7 @@ import { Link } from "gatsby"
 import { palette } from '@assets/styles/Colors'
 
 export const Wrapper = styled.div`
-	padding-bottom: 2rem;
-	padding-left: 0.5rem;
-	margin-bottom: 2rem;
+	padding: 2rem 0.5rem;
 `
 
 export const BackBtn = styled(Link)`
@@ -21,6 +19,7 @@ export const BackBtn = styled(Link)`
 	position: relative;
 	text-transform: uppercase;
 	transition: all 0.3s ease-in-out;
+	user-select: none;
 
 	&:after {
 		border: solid transparent;
