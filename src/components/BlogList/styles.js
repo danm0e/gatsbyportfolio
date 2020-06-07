@@ -37,14 +37,18 @@ export const Item = styled(Link)`
 	}
 
 	h3, h6 {
-		flex-basis: 50%;
 		margin-top: 0;
+	}
+
+	h3 {
+		flex-basis: 70%;
 	}
 
 	h6 {
 		align-self: flex-start;
 		color: ${palette.grey[300]};
 		text-align: right;
+		flex-basis: 30%;
 	}
 
 	p {

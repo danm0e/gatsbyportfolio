@@ -3,12 +3,18 @@ import BlogListItem from './BlogListItem';
 
 import { Wrapper } from './styles'
 
-const BlogList = ({ data }) => (
+const BlogList = ({ data, currentPage }) => (
 	<Wrapper>
 		{data.map(blog => {
 			const { node, node: { id } } = blog
 
-			return <BlogListItem item={node} key={id} />
+			return (
+				<BlogListItem
+					key={id}
+					item={node}
+					currentPage={currentPage}
+				/>
+			)
 		})}
 	</Wrapper>
 )

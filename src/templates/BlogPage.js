@@ -27,7 +27,10 @@ const BlogPage = ({ pageContext }) => {
 		<Layout>
 			<h1>{title}</h1>
 			<PageContent content={content} />
-			<BlogList data={currentPagePosts} />
+			<BlogList
+				data={currentPagePosts}
+				currentPage={currentPage}
+			/>
 			<Pagination
 				numPages={numPages}
 				currentPage={currentPage}
