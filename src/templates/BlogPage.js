@@ -6,9 +6,10 @@ import BlogList from "@components/BlogList"
 import Pagination from "@components/Pagination"
 
 const BlogPage = ({ pageContext }) => {
+	// pageForPostsId = 31
 	const { allWordpressPage: { nodes: pageForPostsContext } } = useStaticQuery(graphql`
 		query {
-			allWordpressPage(filter: { wordpress_id: { eq: 31 } }) { # pageForPostsId = 31
+			allWordpressPage(filter: { wordpress_id: { eq: 31 } }) { 
 				nodes {
 					id
 					title
@@ -19,14 +20,19 @@ const BlogPage = ({ pageContext }) => {
 	`)
 
 	const { title, content } = pageForPostsContext[0]
-	const { currentPage, numPages, posts } = pageContext
+	const { currentPage, numPages, skip, limit, posts } = pageContext
+	const currentPagePosts = posts.slice(skip, skip + limit)
 
 	return (
 		<Layout>
 			<h1>{title}</h1>
 			<PageContent content={content} />
-			<BlogList data={posts} />
-			<Pagination numPages={numPages} currentPage={currentPage} slug="/blog" />
+			<BlogList data={currentPagePosts} />
+			<Pagination
+				numPages={numPages}
+				currentPage={currentPage}
+				slug="/blog"
+			/>
 		</Layout>
 	);
 };
