@@ -5,9 +5,13 @@ import { Item } from './styles'
 
 const BlogListItem = ({ item, currentPage }) => {
 	const { title, excerpt, slug, date } = item
+	const prev = { prev: currentPage }
 
 	return (
-		<Item to={`/blog/${slug}?p=${currentPage}`}>
+		<Item
+			to={`/blog/${slug}`}
+			state={prev}
+		>
 			<h3>{title}</h3>
 			<h6>{date}</h6>
 			<PageContent content={excerpt} />
