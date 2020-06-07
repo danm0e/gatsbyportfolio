@@ -6,7 +6,7 @@ import { Wrapper } from './styles'
 const BlogList = ({ data }) => (
 	<Wrapper>
 		{data.map(blog => {
-			const { node, id } = blog
+			const { node, node: { id } } = blog
 
 			return <BlogListItem item={node} key={id} />
 		})}

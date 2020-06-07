@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Wrapper, PageLink } from './styles'
+import { Wrapper, PageLink, PageNumber } from './styles'
 
 const Pagination = ({ numPages, currentPage, slug }) => {
 	return (
@@ -13,9 +13,10 @@ const Pagination = ({ numPages, currentPage, slug }) => {
 					<PageLink
 						key={`pagination-num-${count}`}
 						to={`${slug}/${i === 0 ? "" : count}`}
-						isActive={currentPage === count}
 					>
-						{count}
+						<PageNumber isActive={currentPage === count} >
+							{count}
+						</PageNumber>
 					</PageLink>
 				)
 			})}
