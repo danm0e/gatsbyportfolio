@@ -27,7 +27,7 @@ BlogListItem.propTypes = {
 		slug: PropTypes.string.isRequired,
 		date: PropTypes.string.isRequired
 	}),
-	currentPage: PropTypes.object.isRequired
+	currentPage: PropTypes.number.isRequired
 };
 
 export default BlogListItem;
