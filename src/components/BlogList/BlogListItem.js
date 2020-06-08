@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PageContent from '@components/PageContent'
 
 import { Item } from './styles'
@@ -17,6 +18,16 @@ const BlogListItem = ({ item, currentPage }) => {
 			<PageContent content={excerpt} />
 		</Item>
 	);
+};
+
+BlogListItem.propTypes = {
+	item: PropTypes.shape({
+		title: PropTypes.string.isRequired,
+		excerpt: PropTypes.string.isRequired,
+		slug: PropTypes.string.isRequired,
+		date: PropTypes.string.isRequired
+	}),
+	currentPage: PropTypes.object.isRequired
 };
 
 export default BlogListItem;

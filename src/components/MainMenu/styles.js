@@ -2,11 +2,6 @@ import styled from 'styled-components'
 import { Link } from "gatsby"
 import { palette } from '@assets/styles/Colors'
 
-export const Wrapper = styled.div`
-	display: flex;
-	padding: 1rem 1.5rem;
-`
-
 export const MenuItem = styled(Link)`
 	align-items: center;
 	color: ${palette.primary};

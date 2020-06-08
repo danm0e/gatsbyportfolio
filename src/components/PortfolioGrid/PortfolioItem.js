@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import FeaturedImage from "@components/FeaturedImage"
 
 import { Card } from './styles'
@@ -12,7 +13,18 @@ const PortfolioItem = ({ item }) => {
 			<FeaturedImage src={thumbnail} alt='Thumbnail' />
 			<div dangerouslySetInnerHTML={{ __html: excerpt }} />
 		</Card>
-	);
-};
+	)
+}
+
+PortfolioItem.propTypes = {
+	item: PropTypes.shape({
+		title: PropTypes.string.isRequired,
+		excerpt: PropTypes.string.isRequired,
+		slug: PropTypes.string.isRequired,
+		featured_media: PropTypes.shape({
+			source_url: PropTypes.string.isRequired
+		})
+	})
+}
 
 export default PortfolioItem;

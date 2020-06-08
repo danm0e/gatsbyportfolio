@@ -26,6 +26,7 @@ const Pagination = ({ numPages, currentPage, slug }) => {
 
 Pagination.propTypes = {
 	numPages: PropTypes.number.isRequired,
+	currentPage: PropTypes.number.isRequired,
 	slug: PropTypes.string.isRequired
 };
 

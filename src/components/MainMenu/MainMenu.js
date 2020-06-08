@@ -1,46 +1,22 @@
 import React from 'react';
-import { useStaticQuery, graphql } from "gatsby"
-import SiteInfo from '@components/SiteInfo'
+import PropTypes from "prop-types"
 
-import { Wrapper, MenuItem } from "./styles"
+import { MenuItem } from "./styles"
 
-const MainMenu = () => {
-	const { allWordpressWpApiMenusMenusItems } = useStaticQuery(graphql`
-		query {
-			allWordpressWpApiMenusMenusItems(filter: {
-				name: {
-					eq: "Main Menu" # return only this menu
-				}
-			}) {
-			edges {
-				node {
-					name
-					items {
-						title
-						object_slug
-					}
-				}
-			}
-		}		
-	} `)
+const MainMenu = ({ items }) => (
+	items.map(item => {
+		const { title, object_slug: url } = item
 
-	const { items } = allWordpressWpApiMenusMenusItems.edges[0].node
+		return (
+			<MenuItem to={url} key={title}>
+				{title}
+			</MenuItem>
+		)
+	})
+)
 
-	return (
-		<Wrapper>
-			<SiteInfo />
-
-			{items.map(item => {
-				const { title, object_slug: url } = item
-
-				return (
-					<MenuItem to={url} key={title}>
-						{title}
-					</MenuItem>
-				)
-			})}
-		</Wrapper>
-	)
-};
+MainMenu.propTypes = {
+	items: PropTypes.array.isRequired,
+}
 
 export default MainMenu

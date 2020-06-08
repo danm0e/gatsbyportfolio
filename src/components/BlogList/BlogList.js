@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BlogListItem from './BlogListItem';
 
 import { Wrapper } from './styles'
@@ -18,5 +19,10 @@ const BlogList = ({ data, currentPage }) => (
 		})}
 	</Wrapper>
 )
+
+BlogList.propTypes = {
+	data: PropTypes.array.isRequired,
+	currentPage: PropTypes.number.isRequired
+};
 
 export default BlogList;

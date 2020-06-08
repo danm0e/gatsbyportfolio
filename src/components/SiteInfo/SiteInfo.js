@@ -1,23 +1,10 @@
 import React from 'react';
-import { useStaticQuery, graphql } from "gatsby"
+import PropTypes from "prop-types"
 
 import { Wrapper, Title, Tagline } from "./styles"
 
-const SiteInfo = () => {
-	const { allWordpressSiteMetadata } = useStaticQuery(graphql`
-		query {
-			allWordpressSiteMetadata {
-				edges {
-					node {
-						name
-						description
-					}
-				}
-			}
-		}		
-	`)
-
-	const { name, description } = allWordpressSiteMetadata.edges[0].node
+const SiteInfo = ({ meta }) => {
+	const { name, description } = meta
 
 	return (
 		<Wrapper>
@@ -26,5 +13,12 @@ const SiteInfo = () => {
 		</Wrapper>
 	);
 };
+
+SiteInfo.propTypes = {
+	meta: PropTypes.shape({
+		name: PropTypes.string.isRequired,
+		description: PropTypes.string.isRequired
+	}),
+}
 
 export default SiteInfo;
