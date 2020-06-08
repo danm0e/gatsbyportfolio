@@ -1,36 +1,19 @@
 import React from 'react';
-import { useStaticQuery, graphql } from "gatsby"
+import PropTypes from 'prop-types';
 import PortfolioItem from './PortfolioItem';
 
 import { Grid } from './styles'
 
-const PortfolioGrid = () => {
-	const { allWordpressWpProjects } = useStaticQuery(graphql`
-		query {
-			allWordpressWpProjects {
-				edges {
-					node {
-						id
-						title
-						slug
-						excerpt
-						content
-						featured_media {
-							source_url
-						}
-					}
-				}
-			}
-		}		
-	`)
+const PortfolioGrid = ({ projects }) => (
+	<Grid>
+		{projects.map(project => (
+			<PortfolioItem item={project.node} key={project.node.id} />
+		))}
+	</Grid>
+)
 
-	return (
-		<Grid>
-			{allWordpressWpProjects.edges.map(project => (
-				<PortfolioItem item={project.node} key={project.node.id} />
-			))}
-		</Grid>
-	)
+PortfolioGrid.propTypes = {
+	projects: PropTypes.array.isRequired
 };
 
 export default PortfolioGrid;

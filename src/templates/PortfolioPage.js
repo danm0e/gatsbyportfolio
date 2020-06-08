@@ -4,13 +4,13 @@ import PageContent from '@components/PageContent'
 import PortfolioGrid from "@components/PortfolioGrid"
 
 const PortfolioPage = ({ pageContext }) => {
-	const { title, content } = pageContext
+	const { node: { title, content }, projects } = pageContext
 
 	return (
 		<Layout>
 			<h1>{title}</h1>
 			<PageContent content={content} />
-			<PortfolioGrid />
+			<PortfolioGrid projects={projects} />
 		</Layout>
 	);
 };

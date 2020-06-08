@@ -82,20 +82,34 @@ exports.createPages = async ({ graphql, actions }) => {
 	const blogPageTemplate = path.resolve(`./src/templates/BlogPage.js`)
 	const singleBlog = path.resolve(`./src/templates/SingleBlog.js`)
 
-	const getPageTemplate = slug => {
+	const getPageData = edge => {
+		const { node, node: { slug } } = edge
+
 		if (slug === 'projects') {
-			return slash(portfolioPageTemplate)
+			return {
+				template: slash(portfolioPageTemplate),
+				context: {
+					node: node,
+					projects: allWordpressWpProjects.edges
+				}
+			}
 		}
 
-		return slash(pageTemplate)
+		return {
+			template: slash(pageTemplate),
+			context: node
+		}
 	}
 
 	// Create main Pages
 	allWordpressPage.edges.forEach(edge => {
+		const { node: { slug } } = edge
+		const { template, context } = getPageData(edge)
+
 		createPage({
-			path: edge.node.slug,
-			component: getPageTemplate(edge.node.slug),
-			context: edge.node,
+			path: slug,
+			component: template,
+			context: context,
 		})
 	})
 
@@ -127,7 +141,7 @@ exports.createPages = async ({ graphql, actions }) => {
 		})
 	})
 
-	// Create Portfolio Pages
+	// Create Portfolio Single Pages
 	allWordpressWpProjects.edges.forEach(edge => {
 		createPage({
 			path: `/projects/${edge.node.slug}`,
